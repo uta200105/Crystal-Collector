@@ -23,29 +23,27 @@ var randomPoodle = parseInt(math1);
 var randomRabbit = parseInt(math2);
 var randomDog = parseInt(math3);
 var randomCat = parseInt(math4);
-var yourScore = randomPoodle + randomRabbit + randomDog + randomCat;
+var yourScore = 0;
+
 // Random Individual Crystal Values
-
-
-$("#poodleButton").on("click", function() {
-    $("#yourTotal").html(randomPoodle);
-}); 
-$("#rabbitButton").on("click", function() {
-    $("#yourTotal").html(randomRabbit);
-});
-$("#dogButton").on("click", function() {
-    $("#yourTotal").html(randomDog);
-});
-$("#catButton").on("click", function() {
-    $("#yourTotal").html(randomCat);
-});
-
-
 // Adding Crystal Values using button Function
 
-// Not sure how to add each variable
-// Not sure how to add for each onclick
-
+$("#poodleButton").on("click", function() {
+    yourScore += randomPoodle;
+    $("#yourTotal").html(yourScore);
+}); 
+$("#rabbitButton").on("click", function() {
+    yourScore += randomRabbit;
+    $("#yourTotal").html(yourScore);
+});
+$("#dogButton").on("click", function() {
+    yourScore += randomCat;
+    $("#yourTotal").html(yourScore);
+});
+$("#catButton").on("click", function() {
+    yourScore += randomDog;
+    $("#yourTotal").html(yourScore);
+});
 
 // End of Game Reaction
 
