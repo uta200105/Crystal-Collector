@@ -12,46 +12,79 @@ $("p").html('');
 });
 
 // Computer's Random Total resets at refresh for now
-document.getElementById("computersTotal").innerHTML = [Math.floor(Math.random() * 120) + 19];
+//document.getElementById("computersTotal").innerHTML = [Math.floor(Math.random() * 120) + 19];
+
 
 // Crystal Button's Math
-var math1 = [Math.floor(Math.random() * 12) + 1];
-var math2 = [Math.floor(Math.random() * 12) + 1];
-var math3 = [Math.floor(Math.random() * 12) + 1];
-var math4 = [Math.floor(Math.random() * 12) + 1];
-var randomPoodle = parseInt(math1);
-var randomRabbit = parseInt(math2);
-var randomDog = parseInt(math3);
-var randomCat = parseInt(math4);
+var math1;
+var math2;
+var math3;
+var math4;
+var randomPoodle;
+var randomRabbit;
+var randomDog;
+var randomCat;
+var yourTotal;
 var yourScore = 0;
+var computersTotal;
 
-// Random Individual Crystal Values
-// Adding Crystal Values using button Function
+startgame();
 
-$("#poodleButton").on("click", function() {
-    yourScore += randomPoodle;
-    $("#yourTotal").html(yourScore);
-}); 
-$("#rabbitButton").on("click", function() {
-    yourScore += randomRabbit;
-    $("#yourTotal").html(yourScore);
-});
-$("#dogButton").on("click", function() {
-    yourScore += randomCat;
-    $("#yourTotal").html(yourScore);
-});
-$("#catButton").on("click", function() {
-    yourScore += randomDog;
-    $("#yourTotal").html(yourScore);
-});
+function startgame()
+{
+    yourTotal = 0;
+    computersTotal = (Math.floor(Math.random() * 120) + 19);
+     math1 = [Math.floor(Math.random() * 12) + 1];
+     math2 = [Math.floor(Math.random() * 12) + 1];
+     math3 = [Math.floor(Math.random() * 12) + 1];
+     math4 = [Math.floor(Math.random() * 12) + 1];
+     randomPoodle = parseInt(math1);
+     randomRabbit = parseInt(math2);
+     randomDog = parseInt(math3);
+     randomCat = parseInt(math4);
+     $("#computersTotal").text(computersTotal);
+     $("#yourTotal").text(yourTotal);
 
-// End of Game Reaction
+}
 
-if (yourScore > ComputersTotal) {
-    alert = "Sorry, let's try again";
-} else if (yourScore = computersTotal) {
-    alert = "You Win!";
+function check()
+{
+    if (yourTotal == computersTotal) {
+        alert("You Win!");
+       yourScore++
+       $("#score").text(yourScore);
+       startgame();
+
+        
+    } 
+    else if (yourTotal > computersTotal) {
+        alert("Sorry, let's try again");
+        yourScore--
+       $("#score").text(yourScore);
+       startgame();
+    }
 }
 
 
-// Reset
+// Random Individual Crystal Values
+$("#poodleButton").on("click", function() {
+    yourTotal += randomPoodle;
+    $("#yourTotal").html(yourTotal);
+    check();
+}); 
+$("#rabbitButton").on("click", function() {
+    yourTotal += randomRabbit;
+    $("#yourTotal").html(yourTotal);
+    check();
+});
+$("#dogButton").on("click", function() {
+    yourTotal += randomCat;
+    $("#yourTotal").html(yourTotal);
+    check();
+});
+$("#catButton").on("click", function() {
+    yourTotal += randomDog;
+    $("#yourTotal").html(yourTotal);
+    check();
+});
+
